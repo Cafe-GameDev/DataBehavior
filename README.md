@@ -18,7 +18,9 @@ O DataCafe estende a filosofia de Programação Orientada a Resources (ROP) da C
 
 ## Documentação
 
-Para informações detalhadas sobre como usar o DataCafe, consulte os arquivos de documentação na pasta `docs/`.
+A documentação completa, com guias detalhados, tutoriais e a referência da API, pode ser encontrada no nosso site oficial:
+
+[https://www.cafegame.dev/cafeengine/datacafe](https://www.cafegame.dev/cafeengine/datacafe)
 
 ## Instalação
 
