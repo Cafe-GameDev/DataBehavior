@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3 uid="uid://new_weapon_data_uid"]
+
+[ext_resource type="Script" path="res://addons/datacafe/scripts/resources/weapon_data.gd" id="1_weapon_data"]
+
+[resource]
+script = ExtResource("1_weapon_data")
+weapon_name = "Basic Sword"
+damage = 15.0
+attack_speed = 0.8
+range = 10.0
+ammo_type = "None"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3 uid="uid://new_move_data_uid"]
+
+[ext_resource type="Script" path="res://addons/datacafe/scripts/resources/move_data.gd" id="1_move_data"]
+
+[resource]
+script = ExtResource("1_move_data")
+speed = 120.0
+acceleration = 0.15
+jump_height = 60.0
+can_crouch = true

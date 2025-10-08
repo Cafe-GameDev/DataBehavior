@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameStateData" load_steps=2 format=3 uid="uid://new_game_state_data_uid"]
+
+[ext_resource type="Script" path="res://addons/datacafe/scripts/resources/game_state_data.gd" id="1_game_state_data"]
+
+[resource]
+script = ExtResource("1_game_state_data")
+level_name = "Forest Level 1"
+player_start_position = Vector2(100, 200)
+enemy_spawn_points = [Vector2(50, 50), Vector2(150, 150)]
+time_limit = 600.0
