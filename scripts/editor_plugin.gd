@@ -2,7 +2,7 @@
 extends EditorPlugin
 
 const AUTOLOAD_NAME = "DataPoll"
-const AUTOLOAD_PATH = "res://addons/datacafe/components/data_manager.tscn"
+const AUTOLOAD_PATH = "res://addons/datacafe/components/data_poll.gd"
 const GROUP_SCENE_PATH = "res://addons/datacafe/panel/data_panel.tscn"
 
 var plugin_panel: ScrollContainer
