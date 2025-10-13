@@ -6,6 +6,4 @@ extends Node
 
 func _ready():
 	if Engine.is_editor_hint():
-		print("DataPoll is ready in editor.")
-	else:
-		print("DataPoll is ready in game.")
+		return
