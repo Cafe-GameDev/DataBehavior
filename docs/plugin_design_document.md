@@ -115,4 +115,4 @@ addons/data_behavior/
 
 -   **Validação de Dados:** Ferramentas para validar a integridade e consistência dos dados.
 -   **Editor Visual de Dados:** Uma ferramenta visual para criar e gerenciar relações entre `DataResource`s.
--   **Integração com Outros Plugins:** Sinergia com outros plugins da suíte CafeEngine (ex: `StateCafe` usando `MoveData`).
+-   **Integração com Outros Plugins:** Sinergia com outros plugins da suíte CafeEngine (ex: `StateMachine` usando `MoveData`).
