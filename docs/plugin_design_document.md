@@ -54,7 +54,7 @@ O sistema é composto por:
 ## 3. Estrutura de Arquivos Proposta
 
 ```
-addons/databe_havior/
+addons/data_behavior/
 ├── plugin.cfg
 ├── components/
 │   └── data_manager.gd
