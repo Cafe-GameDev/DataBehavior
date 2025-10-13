@@ -1,6 +1,6 @@
 # 📊 DataBehavior
 
-[![Godot Asset Library](https://img.shields.io/badge/Godot_Asset_Library-DataBehavior-478cbf?style=for-the-badge&logo=godot-engine)](https://godotengine.org/asset-library/asset/link-to-asset) <!-- Placeholder -->
+[![DataBehavior](https://img.shields.io/badge/Godot_Asset_Library-DataBehavior-478cbf?style=for-the-badge&logo=godot-engine)](https://godotengine.org/asset-library/asset/link-to-asset)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 **DataBehavior** é um plugin para Godot 4.x, parte da suíte CafeEngine, focado em gerenciar e estruturar dados de jogo de forma modular e reutilizável através de Resources.
