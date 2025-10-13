@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpyfep1nwkunn"]
 
 [ext_resource type="Script" uid="uid://bcnjss2hsr4wr" path="res://addons/data_behavior/panel/data_panel.gd" id="1_scaffold_gd"]
-[ext_resource type="Texture2D" uid="uid://ccx4jnvp26lk5" path="res://addons/data_behavior/icons/arrow-big-down-dash.svg" id="2_fp2ye"]
+[ext_resource type="Texture2D" uid="uid://p7u1m5hc8t8s" path="res://addons/data_behavior/icons/arrow-big-up-dash.svg" id="2_fs5lq"]
 [ext_resource type="Texture2D" uid="uid://cpo1iwhmqnj6s" path="res://addons/data_behavior/icons/book-open-text.svg" id="4_u21qr"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2no5w"]
@@ -23,12 +23,11 @@ theme_override_styles/separator = SubResource("StyleBoxLine_2no5w")
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 text = "DataBehavior"
-icon = ExtResource("2_fp2ye")
+icon = ExtResource("2_fs5lq")
 alignment = 0
 icon_alignment = 2
 
 [node name="CollapsibleContent" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CollapsibleContent"]
@@ -66,3 +65,5 @@ horizontal_alignment = 1
 [node name="SaveFeedbackTimer" type="Timer" parent="CollapsibleContent"]
 wait_time = 1.5
 one_shot = true
+
+[connection signal="pressed" from="CollapsibleContent/HBoxContainer/DocsButton" to="." method="_on_docs_button_pressed"]
