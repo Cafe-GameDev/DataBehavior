@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cm6p1nymu5s0k"]
 
-[ext_resource type="Script" path="res://addons/datacafe/components/data_poll.gd" id="1_0u6w8"]
+[ext_resource type="Script" path="res://addons/databe_havior/components/data_poll.gd" id="1_0u6w8"]
 
 [node name="DataPoll" type="Node"]
 script = ExtResource("1_0u6w8")

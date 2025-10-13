@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GameStateData" load_steps=2 format=3 uid="uid://new_game_state_data_uid"]
 
-[ext_resource type="Script" path="res://addons/datacafe/scripts/resources/game_state_data.gd" id="1_game_state_data"]
+[ext_resource type="Script" path="res://addons/databe_havior/scripts/resources/game_state_data.gd" id="1_game_state_data"]
 
 [resource]
 script = ExtResource("1_game_state_data")

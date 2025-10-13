@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpyfep1nwkunn"]
 
-[ext_resource type="Script" uid="uid://bcnjss2hsr4wr" path="res://addons/datacafe/panel/data_panel.gd" id="1_scaffold_gd"]
-[ext_resource type="Texture2D" uid="uid://ccx4jnvp26lk5" path="res://addons/datacafe/icons/arrow-big-down-dash.svg" id="2_fp2ye"]
-[ext_resource type="Texture2D" uid="uid://cpo1iwhmqnj6s" path="res://addons/datacafe/icons/book-open-text.svg" id="4_u21qr"]
+[ext_resource type="Script" uid="uid://bcnjss2hsr4wr" path="res://addons/databe_havior/panel/data_panel.gd" id="1_scaffold_gd"]
+[ext_resource type="Texture2D" uid="uid://ccx4jnvp26lk5" path="res://addons/databe_havior/icons/arrow-big-down-dash.svg" id="2_fp2ye"]
+[ext_resource type="Texture2D" uid="uid://cpo1iwhmqnj6s" path="res://addons/databe_havior/icons/book-open-text.svg" id="4_u21qr"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2no5w"]
 color = Color(0.79471993, 0.38115883, 0.7106348, 1)
@@ -22,7 +22,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_2no5w")
 [node name="HeaderButton" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
-text = "DataCafe"
+text = "DataBehavior"
 icon = ExtResource("2_fp2ye")
 alignment = 0
 icon_alignment = 2

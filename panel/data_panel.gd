@@ -7,10 +7,10 @@ class_name DataPanel
 @onready var save_feedback_label: Label = $CollapsibleContent/SaveFeedbackLabel
 @onready var save_feedback_timer: Timer = $CollapsibleContent/SaveFeedbackTimer
 
-const ARROW_BIG_DOWN_DASH = preload("res://addons/datacafe/icons/arrow-big-down-dash.svg")
-const ARROW_BIG_UP_DASH = preload("res://addons/datacafe/icons/arrow-big-up-dash.svg")
+const ARROW_BIG_DOWN_DASH = preload("res://addons/databe_havior/icons/arrow-big-down-dash.svg")
+const ARROW_BIG_UP_DASH = preload("res://addons/databe_havior/icons/arrow-big-up-dash.svg")
 
-@export var data_config: DataConfig = preload("res://addons/datacafe/resources/data_config.tres")
+@export var data_config: DataConfig = preload("res://addons/databe_havior/resources/data_config.tres")
 
 var _is_expanded: bool = true
 var _expanded_height: float = 0.0

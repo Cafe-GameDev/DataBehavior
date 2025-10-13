@@ -1,4 +1,4 @@
-# DataCafe - Plugin Design Document (PDD)
+# DataBehavior - Plugin Design Document (PDD)
 
 **Versão do Documento:** 1.0
 **Data:** 2025-10-07
@@ -10,7 +10,7 @@
 
 ### 1.1. Conceito
 
-O **DataCafe** é um plugin para Godot Engine 4.x, parte da suíte CafeEngine, projetado para gerenciar e estruturar dados de jogo de forma modular e reutilizável através de Resources. Ele estende a filosofia de Programação Orientada a Resources (ROP), permitindo que os desenvolvedores definam e organizem dados complexos do seu jogo como Resources.
+O **DataBehavior** é um plugin para Godot Engine 4.x, parte da suíte CafeEngine, projetado para gerenciar e estruturar dados de jogo de forma modular e reutilizável através de Resources. Ele estende a filosofia de Programação Orientada a Resources (ROP), permitindo que os desenvolvedores definam e organizem dados complexos do seu jogo como Resources.
 
 ### 1.2. Filosofia
 
@@ -21,7 +21,7 @@ O **DataCafe** é um plugin para Godot Engine 4.x, parte da suíte CafeEngine, p
 
 ### 1.3. Política de Versão e Compatibilidade
 
--   **Versão Alvo:** O DataCafe tem como alvo inicial o **Godot 4.5**.
+-   **Versão Alvo:** O DataBehavior tem como alvo inicial o **Godot 4.5**.
 -   **Compatibilidade Futura:** O projeto será ativamente mantido para garantir compatibilidade com versões futuras do Godot 4.x.
 -   **Retrocompatibilidade:** Não haverá suporte para versões anteriores ao Godot 4.5, a fim de aproveitar os recursos mais recentes da engine e manter uma base de código limpa e moderna.
 
@@ -54,7 +54,7 @@ O sistema é composto por:
 ## 3. Estrutura de Arquivos Proposta
 
 ```
-addons/datacafe/
+addons/databe_havior/
 ├── plugin.cfg
 ├── components/
 │   └── data_manager.gd

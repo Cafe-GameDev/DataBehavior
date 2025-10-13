@@ -1,11 +1,11 @@
-# Como Contribuir para o DataCafe
+# Como Contribuir para o DataBehavior
 
-Obrigado pelo seu interesse em contribuir para o **DataCafe**!
+Obrigado pelo seu interesse em contribuir para o **DataBehavior**!
 
 ## Reportando Bugs
 
 -   **Verifique issues existentes:** Antes de criar uma nova, veja se o bug já não foi reportado.
--   **Seja Detalhado:** Inclua a versão do Godot, a versão do DataCafe, passos para reproduzir o bug, e o que você esperava que acontecesse.
+-   **Seja Detalhado:** Inclua a versão do Godot, a versão do DataBehavior, passos para reproduzir o bug, e o que você esperava que acontecesse.
 
 ## Sugerindo Melhorias
 
