@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmnothfq3nmy8"]
 
-[ext_resource type="Script" path="res://addons/data_behavior/panel/data_modal_panel.gd" id="1_381bp"]
+[ext_resource type="Script" uid="uid://dwa3k2tdkcq86" path="res://addons/data_behavior/panel/data_modal_panel.gd" id="1_381bp"]
 
 [node name="DataModalPanel" type="Control"]
 layout_mode = 3
