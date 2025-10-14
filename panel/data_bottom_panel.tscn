@@ -45,11 +45,6 @@ text = "Atualizar"
 [node name="ResourceItemList" type="ItemList" parent="HBoxContainer/ResourceContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 4
-item_0/text = "data_config.tres"
-item_1/text = "game_state_data.tres"
-item_2/text = "move_data.tres"
-item_3/text = "weapon_data.tres"
 
 [node name="ScriptContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -73,12 +68,6 @@ text = "Editar Script"
 [node name="ScriptItemList" type="ItemList" parent="HBoxContainer/ScriptContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 5
-item_0/text = "data_config.gd"
-item_1/text = "resources/data_resource.gd"
-item_2/text = "resources/game_state_data.gd"
-item_3/text = "resources/move_data.gd"
-item_4/text = "resources/weapon_data.gd"
 
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/CreateResourceButton" to="." method="_on_create_resource_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/RemoveResourceButton" to="." method="_on_remove_resource_button_pressed"]

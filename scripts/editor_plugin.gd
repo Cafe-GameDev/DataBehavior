@@ -1,19 +1,21 @@
 @tool
 extends EditorPlugin
 
-const AUTOLOAD_NAME = "DataPoll"
-const AUTOLOAD_PATH = "res://addons/data_behavior/components/data_poll.gd"
+const AUTOLOAD_NAME = "DataBehavior"
+const AUTOLOAD_PATH = "res://addons/data_behavior/components/data_behavior.gd"
 const GROUP_SCENE_PATH = "res://addons/data_behavior/panel/data_panel.tscn"
+const BOTTOM_PANEL_SCENE_PATH = "res://addons/data_behavior/panel/data_bottom_panel.tscn"
 
 var plugin_panel: ScrollContainer
 var group_panel: VBoxContainer
+var bottom_panel_instance: Control
 
 const CORE_ENGINE_AUTOLOAD_NAME = "CoreEngine"
 const CORE_ENGINE_GITHUB_URL = "https://github.com/CafeGameDev/CafeEngine"
 
 func _enter_tree():
 	if not ProjectSettings.has_setting("autoload/" + CORE_ENGINE_AUTOLOAD_NAME):
-		var error_message = "O plugin StateMachine requer o plugin CoreEngine para funcionar corretamente. " \
+		var error_message = "O plugin DataBehavior requer o plugin CoreEngine para funcionar corretamente. " \
 							+ "Por favor, certifique-se de que o CoreEngine está instalado e configurado como um Autoload com o nome '" + CORE_ENGINE_AUTOLOAD_NAME + "'. " \
 							+ "Você pode encontrar o CoreEngine em: " + CORE_ENGINE_GITHUB_URL
 		push_error(error_message)
@@ -29,6 +31,15 @@ func _enter_tree():
 		await get_tree().create_timer(0.1).timeout
 	
 	_create_plugin_panel()
+
+	# Adiciona o painel inferior
+	var bottom_panel_scene = load(BOTTOM_PANEL_SCENE_PATH)
+	if bottom_panel_scene and bottom_panel_scene is PackedScene:
+		bottom_panel_instance = bottom_panel_scene.instantiate()
+		add_control_to_bottom_panel(bottom_panel_instance, "DataBehavior")
+	else:
+		push_error("Could not load DataBehavior bottom panel scene.")
+
 	_register_custom_types()
 
 func _exit_tree():
@@ -37,6 +48,10 @@ func _exit_tree():
 	
 	if is_instance_valid(group_panel):
 		group_panel.free()
+
+	if is_instance_valid(bottom_panel_instance):
+		remove_control_from_bottom_panel(bottom_panel_instance)
+		bottom_panel_instance.free()
 	
 	_unregister_custom_types()
 
@@ -58,15 +73,15 @@ func _ensure_group(group_name: String) -> VBoxContainer:
 
 	group_panel = content_container.find_child(group_name, false)
 	if group_panel:
-		const SCAFFOLDING_CONFIG_PATH = "res://addons/data_behavior/resources/data_config.tres"
-		var data_config_res = ResourceLoader.load(SCAFFOLDING_CONFIG_PATH)
+		const DATA_CONFIG_PATH = "res://addons/data_behavior/resources/data_config.tres"
+		var data_config_res = ResourceLoader.load(DATA_CONFIG_PATH)
 		if not data_config_res:
 			data_config_res = preload("res://addons/data_behavior/scripts/data_config.gd").new()
-			var dir = SCAFFOLDING_CONFIG_PATH.get_base_dir()
+			var dir = DATA_CONFIG_PATH.get_base_dir()
 			if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(dir)):
 				DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(dir))
 			
-			var error = ResourceSaver.save(data_config_res, SCAFFOLDING_CONFIG_PATH)
+			var error = ResourceSaver.save(data_config_res, DATA_CONFIG_PATH)
 			if error != OK:
 				push_error("Failed to create and save a new DataConfig resource: %s" % error)
 		group_panel.set_data_config(data_config_res)
@@ -78,16 +93,16 @@ func _ensure_group(group_name: String) -> VBoxContainer:
 		content_container.add_child(group_panel)
 		group_panel.name = group_name
 
-		const SCAFFOLDING_CONFIG_PATH = "res://addons/data_behavior/resources/data_config.tres"
-		var data_config_res = ResourceLoader.load(SCAFFOLDING_CONFIG_PATH)
+		const DATA_CONFIG_PATH = "res://addons/data_behavior/resources/data_config.tres"
+		var data_config_res = ResourceLoader.load(DATA_CONFIG_PATH)
 
 		if not data_config_res:
 			data_config_res = preload("res://addons/data_behavior/scripts/data_config.gd").new()
-			var dir = SCAFFOLDING_CONFIG_PATH.get_base_dir()
+			var dir = DATA_CONFIG_PATH.get_base_dir()
 			if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(dir)):
 				DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(dir))
 			
-			var error = ResourceSaver.save(data_config_res, SCAFFOLDING_CONFIG_PATH)
+			var error = ResourceSaver.save(data_config_res, DATA_CONFIG_PATH)
 			if error != OK:
 				push_error("Failed to create and save a new DataConfig resource: %s" % error)
 		

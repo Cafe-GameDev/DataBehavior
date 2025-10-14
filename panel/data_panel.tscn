@@ -9,9 +9,11 @@ color = Color(0.79471993, 0.38115883, 0.7106348, 1)
 thickness = 3
 
 [node name="DataPanel" type="VBoxContainer"]
-custom_minimum_size = Vector2(340, 0)
-offset_right = 340.0
-offset_bottom = 46.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 0
 script = ExtResource("1_scaffold_gd")
 
