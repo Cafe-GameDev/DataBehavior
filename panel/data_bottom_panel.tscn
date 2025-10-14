@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://hifmghxo6a06"]
+
+[ext_resource type="Script" path="res://addons/data_behavior/panel/data_bottom_panel.gd" id="1_xxxx"]
+
+[node name="DataBottomPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xxxx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResourceContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ResourceContainer"]
+layout_mode = 2
+
+[node name="CreateResourceButton" type="Button" parent="HBoxContainer/ResourceContainer/HBoxContainer"]
+layout_mode = 2
+text = "Criar"
+
+[node name="RemoveResourceButton" type="Button" parent="HBoxContainer/ResourceContainer/HBoxContainer"]
+layout_mode = 2
+text = "Remover"
+
+[node name="EditResourceButton" type="Button" parent="HBoxContainer/ResourceContainer/HBoxContainer"]
+layout_mode = 2
+text = "Editar Resource"
+
+[node name="RefreshButton" type="Button" parent="HBoxContainer/ResourceContainer/HBoxContainer"]
+layout_mode = 2
+text = "Atualizar"
+
+[node name="ResourceItemList" type="ItemList" parent="HBoxContainer/ResourceContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 4
+item_0/text = "data_config.tres"
+item_1/text = "game_state_data.tres"
+item_2/text = "move_data.tres"
+item_3/text = "weapon_data.tres"
+
+[node name="ScriptContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ScriptContainer"]
+layout_mode = 2
+
+[node name="CreateScriptButton" type="Button" parent="HBoxContainer/ScriptContainer/HBoxContainer"]
+layout_mode = 2
+text = "Criar"
+
+[node name="RemoveScriptButton" type="Button" parent="HBoxContainer/ScriptContainer/HBoxContainer"]
+layout_mode = 2
+text = "Remover"
+
+[node name="EditScriptButton" type="Button" parent="HBoxContainer/ScriptContainer/HBoxContainer"]
+layout_mode = 2
+text = "Editar Script"
+
+[node name="ScriptItemList" type="ItemList" parent="HBoxContainer/ScriptContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 5
+item_0/text = "data_config.gd"
+item_1/text = "resources/data_resource.gd"
+item_2/text = "resources/game_state_data.gd"
+item_3/text = "resources/move_data.gd"
+item_4/text = "resources/weapon_data.gd"
+
+[connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/CreateResourceButton" to="." method="_on_create_resource_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/RemoveResourceButton" to="." method="_on_remove_resource_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/EditResourceButton" to="." method="_on_edit_resource_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/RefreshButton" to="." method="_on_refresh_button_pressed"]
+[connection signal="item_activated" from="HBoxContainer/ResourceContainer/ResourceItemList" to="." method="_on_resource_item_list_item_activated"]
+[connection signal="pressed" from="HBoxContainer/ScriptContainer/HBoxContainer/CreateScriptButton" to="." method="_on_create_script_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ScriptContainer/HBoxContainer/RemoveScriptButton" to="." method="_on_remove_script_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ScriptContainer/HBoxContainer/EditScriptButton" to="." method="_on_edit_script_button_pressed"]
+[connection signal="item_activated" from="HBoxContainer/ScriptContainer/ScriptItemList" to="." method="_on_script_item_list_item_activated"]

@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="DataConfig" load_steps=2 format=3 uid="uid://bklv4y65psrfp"]
-
-[ext_resource type="Script" uid="uid://dk03wddbf6aqv" path="res://addons/data_behavior/scripts/data_config.gd" id="1_scaffold_cfg"]
-
-[resource]
-script = ExtResource("1_scaffold_cfg")
-is_panel_expanded = false
