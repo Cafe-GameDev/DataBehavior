@@ -1,8 +1,8 @@
 # DataBehavior - Plugin Design Document (PDD)
 
 **Versão do Documento:** 1.0
-**Data:** 2025-10-07
-**Autor:** Gemini (em colaboração com Bruno)
+**Data:** 2025-10-14
+**Autor:** Café GameDev
 
 ---
 
@@ -12,107 +12,121 @@
 
 O **DataBehavior** é um plugin para Godot Engine 4.x, parte da suíte CafeEngine, projetado para gerenciar e estruturar dados de jogo de forma modular e reutilizável através de Resources. Ele estende a filosofia de Programação Orientada a Resources (ROP), permitindo que os desenvolvedores definam e organizem dados complexos do seu jogo como Resources.
 
-### 1.2. Filosofia
+### 1.2. Filosofia Central
 
--   **Dados como Resources:** Todos os dados de jogo (estatísticas de itens, configurações de inimigos, dados de níveis, etc.) são tratados como `Resource`s, aproveitando a serialização e a integração nativa do Godot.
--   **Modularidade:** Separação clara entre dados e lógica de comportamento, promovendo sistemas mais flexíveis e fáceis de manter.
--   **Edição no Inspector:** Permite que designers e desenvolvedores editem e ajustem os valores dos dados diretamente no Inspector do Godot, sem a necessidade de codificação.
--   **Reutilização:** Facilita o compartilhamento e a reutilização de conjuntos de dados entre diferentes entidades e sistemas do jogo.
+*   **Dados como Resources:** Todos os dados de jogo são tratados como `Resource`s, aproveitando a serialização e a integração nativa do Godot. Isso promove a edição no Inspector, reuso e manutenção.
+*   **Modularidade:** Separação clara entre dados e lógica de comportamento, promovendo sistemas mais flexíveis e fáceis de modificar.
+*   **Edição Visual:** Integração com o `BlueprintEditor` para permitir a visualização e manipulação gráfica de `DataResource`s, facilitando a criação de sistemas de dados complexos.
 
 ### 1.3. Política de Versão e Compatibilidade
 
--   **Versão Alvo:** O DataBehavior tem como alvo inicial o **Godot 4.5**.
--   **Compatibilidade Futura:** O projeto será ativamente mantido para garantir compatibilidade com versões futuras do Godot 4.x.
--   **Retrocompatibilidade:** Não haverá suporte para versões anteriores ao Godot 4.5, a fim de aproveitar os recursos mais recentes da engine e manter uma base de código limpa e moderna.
+*   **Versão Alvo:** Godot 4.5+
+*   **Compatibilidade:** Mantida com versões futuras da série 4.x.
+*   **Retrocompatibilidade:** Nenhum suporte a versões anteriores a 4.5, garantindo código moderno e limpo.
 
 ---
 
 ## 2. Arquitetura Principal
 
-O sistema é composto por:
+O sistema DataBehavior é composto por elementos que facilitam a gestão de dados.
 
-### 2.1. `DataManager` (O Gerenciador de Dados)
+### 2.1. Componentes Principais
 
--   **Tipo:** `Node` (Autoload Singleton).
--   **Função:** Atua como um ponto de acesso global para todos os dados do jogo. Ele pode carregar, armazenar e fornecer acesso a `DataResource`s.
--   **Funcionalidades Planejadas:**
-    -   Carregamento assíncrono de dados.
-    -   Gerenciamento de diferentes conjuntos de dados (ex: `WeaponData`, `MoveData`, `GameStateData`).
-    -   (Futuro) Validação de dados.
-
-### 2.2. `DataResource` (A Base para Dados)
-
--   **Tipo:** `Resource`.
--   **Função:** Classe base abstrata para todos os recursos de dados específicos do jogo. Ele pode conter propriedades exportadas para serem configuradas no Inspector.
--   **Exemplos de Implementação:**
-    -   `WeaponData`: Contém propriedades como `damage`, `attack_speed`, `range`.
-    -   `MoveData`: Contém propriedades como `speed`, `acceleration`, `jump_height`.
-    -   `GameStateData`: Contém propriedades como `level_name`, `player_start_position`, `enemy_spawn_points`.
+*   **`DataManager` (Autoload Singleton):** Um `Node` que atua como um ponto de acesso global para todos os dados do jogo. Ele pode carregar, armazenar e fornecer acesso a `DataResource`s.
+*   **`DataResource` (Base Class):** A classe base abstrata para todos os recursos de dados específicos do jogo. Ele pode conter propriedades exportadas para serem configuradas no Inspector.
+*   **`DataBottomPanel`:** Um painel ancorado na parte inferior do editor, utilizado para listar, gerenciar e criar `DataResource`s e seus scripts associados.
+*   **`DataPanel` (SidePanel):** Um painel lateral compacto, principalmente para acesso rápido à documentação e configurações gerais do plugin.
 
 ---
 
-## 3. Estrutura de Arquivos Proposta
+## 3. Estrutura de Arquivos Padrão
 
 ```
 addons/data_behavior/
 ├── plugin.cfg
 ├── components/
-│   └── data_manager.gd
+│   └── data_behavior.gd
 ├── resources/
 │   ├── data_config.tres
 │   └── data_resources/ # Subpasta para todos os DataResources (recursos)
 │       ├── data_resource.gd
-│       ├── weapon_data.gd
-│       ├── move_data.gd
-│       └── game_state_data.gd
+│       └── [outros_data_resources].gd
 ├── panel/
+│   ├── data_bottom_panel.gd
+│   ├── data_bottom_panel.tscn
 │   ├── data_panel.gd
 │   └── data_panel.tscn
 ├── scripts/
 │   └── editor_plugin.gd
 └── icons/
-    └── data_icon.svg
+    └── [icones].svg
 ```
 
 ---
 
 ## 4. Plano de Desenvolvimento em Fases
 
-### Fase 1: Fundação (MVP - Minimum Viable Product)
+### Fase 1: Fundação (MVP)
 
--   [ ] **Criar Script Base:** Implementar `data_resource.gd` como a classe base para todos os recursos de dados.
--   [ ] **Criar `DataManager`:** Implementar `data_manager.gd` como um autoload singleton.
--   [ ] **Criar Recursos de Dados de Exemplo:** Desenvolver `WeaponData`, `MoveData` e `GameStateData` como prova de conceito.
--   **Objetivo:** Ter um sistema funcional para definir e acessar dados de jogo através de Resources.
+*   [x] **`DataResource`:** Implementar a classe base para todos os recursos de dados.
+*   [x] **`DataManager`:** Implementar o `data_behavior.gd` como um autoload singleton.
+*   [x] **`DataBottomPanel`:** Criar o painel inferior para gerenciamento de `DataResource`s.
+*   [x] **`DataPanel`:** Criar o SidePanel para acesso à documentação e configurações.
+*   **Objetivo:** Ter um sistema funcional para definir, acessar e gerenciar dados de jogo através de Resources no editor.
 
 ### Fase 2: Integração como Plugin Godot e Melhorias no Inspector
 
--   [ ] **Criar `plugin.cfg`:** Definir o plugin para o Godot.
--   [ ] **Implementar `editor_plugin.gd`:**
-    -   Registrar `DataResource` e seus derivados como tipos customizados com ícones próprios.
-    -   Adicionar uma opção no menu `Create Resource` para facilitar a criação de `DataResource`s.
--   [ ] **Inspector Aprimorado:** Utilizar `_get_property_list()` nos `DataResource`s para organizar propriedades em categorias.
--   **Objetivo:** Transformar o sistema em um plugin fácil de instalar e usar, com melhor clareza no Inspector.
+*   [ ] **`plugin.cfg`:** Definir o plugin para o Godot.
+*   [ ] **`editor_plugin.gd`:** Registrar `DataResource` e seus derivados como tipos customizados com ícones próprios e configurar o autoload.
+*   [ ] **Inspector Aprimorado:** Utilizar `_get_property_list()` nos `DataResource`s para organizar propriedades em categorias.
+*   **Objetivo:** Transformar o sistema em um plugin fácil de instalar e usar, com melhor clareza no Inspector.
 
-### Fase 3: Painel de UI e Ferramentas de Depuração
+### Fase 3: Edição Visual e Ferramentas de Depuração
 
--   [ ] **Criar `data_panel.tscn` e `data_panel.gd`:** Desenvolver a UI principal do plugin, que será docada no editor.
--   [ ] **Funcionalidades do Painel:**
-    -   Visualizar e gerenciar os `DataResource`s carregados.
-    -   Ferramentas para criar e editar `DataResource`s.
--   **Objetivo:** Fornecer feedback visual e ferramentas que acelerem o desenvolvimento e a depuração de dados de jogo.
+*   [ ] **Integração com `BlueprintEditor`:** Desenvolver a funcionalidade para que o `BlueprintEditor` possa visualizar e manipular `DataResource`s graficamente.
+*   [ ] **Validação de Dados:** Implementar ferramentas para validar a integridade e consistência dos dados.
+*   [ ] **Ferramentas de Criação:** Melhorar as ferramentas de criação de `DataResource`s e scripts associados.
+*   **Objetivo:** Fornecer feedback visual e ferramentas que acelerem o desenvolvimento e a depuração de dados de jogo.
 
 ### Fase 4: Documentação e Exemplos
 
--   [ ] **Documentar o Código:** Adicionar comentários claros em todas as classes e funções principais.
--   [ ] **Criar Documentação Externa:** Escrever guias no formato Markdown na pasta `docs/` do plugin.
--   [ ] **Criar um Projeto Demo Completo:** Montar um pequeno jogo ou cena de exemplo que utilize diversos `DataResource`s.
--   **Objetivo:** Garantir que o plugin seja acessível e fácil de aprender para novos usuários.
+*   [ ] **Documentar o Código:** Adicionar comentários claros em todas as classes e funções principais.
+*   [ ] **Criar Documentação Externa:** Escrever guias no formato Markdown na pasta `docs/` do plugin.
+*   [ ] **Criar um Projeto Demo Completo:** Montar um pequeno jogo ou cena de exemplo que utilize diversos `DataResource`s.
+*   **Objetivo:** Garantir que o plugin seja acessível e fácil de aprender para novos usuários.
 
 ---
 
-## 5. Considerações Futuras (Pós-MVP)
+## 5. Padrões de Qualidade de Código
 
--   **Validação de Dados:** Ferramentas para validar a integridade e consistência dos dados.
--   **Editor Visual de Dados:** Uma ferramenta visual para criar e gerenciar relações entre `DataResource`s.
--   **Integração com Outros Plugins:** Sinergia com outros plugins da suíte CafeEngine (ex: `StateMachine` usando `MoveData`).
+*   Todos os scripts de Resource e Editor devem usar `@tool`.
+*   Classes documentadas com docstring.
+*   Sinais seguem convenção: `changed`, `updated`, `requested`, `completed`.
+*   Nenhum Resource deve depender diretamente de Nodes (exceto para referências de `owner` em `StateBehavior`s, por exemplo).
+
+---
+
+## 6. Considerações Futuras
+
+*   **Editor Visual de Dados:** Uma ferramenta visual mais avançada para criar e gerenciar relações complexas entre `DataResource`s.
+*   **Geração Automática:** Ferramentas para gerar `DataResource`s a partir de fontes externas (ex: CSV, JSON).
+
+---
+
+## Instalação
+
+1.  **AssetLib (Recomendado):**
+    *   Procure por "DataBehavior" na Godot Asset Library e instale o plugin.
+2.  **Manual (GitHub):**
+    *   Baixe o repositório.
+    *   Copie a pasta `addons/data_behavior` para a pasta `addons/` do seu projeto.
+
+Após a instalação, vá em `Project -> Project Settings -> Plugins` e ative o plugin **DataBehavior**.
+
+## Contribuição
+
+Este projeto é open-source e contribuições são bem-vindas! Por favor, leia nosso [guia de contribuição](../../CONTRIBUTING.md) para saber como reportar bugs, sugerir funcionalidades e submeter pull requests.
+
+## Licença
+
+Este projeto é distribuído sob a Licença MIT. Veja o arquivo [LICENSE](../../LICENSE) para mais detalhes.
